@@ -1,6 +1,7 @@
 RES = WIDTH, HEIGHT = 1350, 700
 FPS = 60
 
+#Ambos os Fake valores abaixos foram feitos tendo em vista diferentes resoluções de computadores
 FAKEWIDTH = WIDTH/16
 FAKEHEIGHT = HEIGHT/9
 
