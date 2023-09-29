@@ -57,10 +57,13 @@ class Player:
 
 
     def draw(self):
-        pg.draw.line(self.game.screen, 'yellow', (self.x * FAKEWIDTH, self.y * FAKEHEIGHT),
+
+        pg.draw.line(self.game.screen, 'red', (self.x * FAKEWIDTH, self.y * FAKEHEIGHT),
                      (self.x * FAKEWIDTH + WIDTH * math.cos(self.angle),
                       self.y * FAKEHEIGHT + WIDTH * math.sin(self.angle)), 2)
+
         pg.draw.circle(self.game.screen, 'green', (self.x * FAKEWIDTH, self.y * FAKEHEIGHT), 15)
+
 
     def update(self):
         self.movement()
