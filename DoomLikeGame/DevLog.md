@@ -20,3 +20,26 @@ take some time off college and into programming.
 0927 - Started doing the engine of the game
 (raycasting and stuff), it's been one week since I
 did something in the game, better do more.
+
+0929 - I've tried solving more about the raycasting 
+function, but something is on my nerve. On the 
+beggining i've tried doing it on a "changable" frame,
+but this idea doesn't work if the entire game doesn't
+work, so I am trashing it out to biuld again from a
+squared resolution and a change it latter. A squared
+map will be implemented too.
+
+This is super hard
+
+1003 - Finally the raycasting did work, what I did 
+wrong was the raycasting function was searching for 
+every occurrence of a ray passing through a wall, 
+that cause a wall do be seen, but the wall behind 
+also was passed through (because of the max depth),
+that made two rays, one inside the other. Now i'll
+try to make the rest of the game from the first 
+tutorial, then i'll try to implement a different
+type o raycasting, called a Digital Differential 
+Analyzer (DDA). I'll see this again later. 
+
+

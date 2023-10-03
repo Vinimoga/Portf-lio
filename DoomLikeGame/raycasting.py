@@ -21,19 +21,21 @@ class RayCasting:
         for ray in range(NUM_ARRAYS):
             sin_a = math.sin(ray_angle)
             cos_a = math.cos(ray_angle)
-
+            flag = 0
             #print(sin_a, cos_a)
             for depth in range(MAX_DEPTH):
                 target_x = ox + (cos_a * depth)
                 target_y = oy + (sin_a * depth)
-                future_target = ox + (cos_a * (depth+1)),oy + (sin_a * (depth+1))
+                #future_target = ox + (cos_a * (depth+1)),oy + (sin_a * (depth+1))
                 col = int(target_x)
                 row = int(target_y)
                 quadrado = col, row
 
-                if quadrado in self.game.map.world_map:
+                if quadrado in self.game.map.world_map and flag == 0:
+                    flag = 1
                     pg.draw.line(self.game.screen, (255, 255, 0), (ox*FAKEWIDTH, oy*FAKEHEIGHT),
                                  (FAKEWIDTH * target_x, FAKEHEIGHT * target_y))
+
 
             ray_angle += DELTA_ANGLE
 
