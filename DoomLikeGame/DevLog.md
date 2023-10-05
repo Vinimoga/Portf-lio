@@ -42,4 +42,13 @@ tutorial, then i'll try to implement a different
 type o raycasting, called a Digital Differential 
 Analyzer (DDA). I'll see this again later. 
 
-
+1004 - Today I braced miself to do the DDA part.
+It is acctually not that hard. The way it works 
+is tracing a ray to intercept the horizontal 
+lines and the vertical lines, witch is the closest
+one is where the ray 'hits' the wall. The problem 
+arrives in exacly intercepting, becouse depending 
+on the angle, the first part of the tile the ray 
+is gonna hit is the top side, the botton side, so
+you need to see with angle are you at to define 
+where can it get, and then compare the results.
