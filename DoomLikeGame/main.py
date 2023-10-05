@@ -30,8 +30,8 @@ class Game:
 
     def draw(self):
         self.screen.fill('black')
-        self.player.draw()
-        self.map.draw()
+        #self.player.draw()
+        #self.map.draw()
 
     def check_events(self):
         for event in pg.event.get():

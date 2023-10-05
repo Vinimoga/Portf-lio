@@ -52,3 +52,12 @@ on the angle, the first part of the tile the ray
 is gonna hit is the top side, the botton side, so
 you need to see with angle are you at to define 
 where can it get, and then compare the results.
+
+1005 - My error on the raycasting algoritmm was
+literally a tiny number you should be subtracting
+for it to work. I don't know why, this is what 
+the internet told me. So now it is working huh...
+
+the rest of the day I tried the pseudo 3D, so 
+bear with me.
+

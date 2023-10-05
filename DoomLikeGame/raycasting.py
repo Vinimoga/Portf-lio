@@ -10,7 +10,7 @@ class RayCasting:
 
         ox, oy = self.game.player.pos
         x_map, y_map = self.game.player.map_pos
-        ray_starting_angle = self.game.player.angle - HALF_FOV + 0.0001 #Adiciona um numerinho para não ter divisão por 0
+        ray_starting_angle = self.game.player.angle - HALF_FOV + 0.0001 #add number for division by 0 error
 
         for ray in range(NUM_ARRAYS):
             sin_a = math.sin(ray_starting_angle)
@@ -43,12 +43,14 @@ class RayCasting:
                     pg.draw.line(self.game.screen, (255, 255, 0), (ox*FAKEWIDTH, oy*FAKEHEIGHT),
                                  (FAKEWIDTH * target_x, FAKEHEIGHT * target_y))
                 
-                #########################################################################################################
+                
                 '''
+
             #check the horizontals
-            y_horizontal, dy = (y_map + 1, 1) if sin_a > 0 else (y_map, -1)
+            y_horizontal, dy = (y_map + 1, 1) if sin_a > 0 else (y_map - 0.00000001, -1)
+            # Subtracting y_map for a bigger number will result in error
             depth_horizontal = (y_horizontal - oy)/sin_a
-            x_horizontal = ox + (depth_horizontal * cos_a)
+            x_horizontal = ox + depth_horizontal * cos_a
             d_depth = dy / sin_a
             dx = d_depth * cos_a
 
@@ -57,16 +59,16 @@ class RayCasting:
                 if tile_horizontal in self.game.map.world_map:
                     # Ray has intersection with wall
                     break
-                y_horizontal += dy
                 x_horizontal += dx
+                y_horizontal += dy
+
                 depth_horizontal += d_depth
 
-                # Check the verticals
-            x_vertical, dx = (x_map + 1, 1) if cos_a > 0 else (x_map, -1)
-
+            # Check the verticals
+            x_vertical, dx = (x_map + 1, 1) if cos_a > 0 else (x_map - 0.00000001, -1)
+            #Subtracting x_map for a bigger number will result in error
             depth_vertical = (x_vertical - ox) / cos_a
-            y_vertical = oy + (depth_vertical * sin_a)
-
+            y_vertical = oy + depth_vertical * sin_a
             d_depth = dx / cos_a
             dy = d_depth * sin_a
 
@@ -86,54 +88,24 @@ class RayCasting:
             else:
                 depth = depth_horizontal
 
-            '''
-                #horizontals
-            y_hor, dy = (y_map + 1, 1) if sin_a > 0 else (y_map - 1e-6, -1)
 
-            depth_hor = (y_hor - oy) / sin_a
-            x_hor = ox + depth_hor * cos_a
-
-            delta_depth = dy / sin_a
-            dx = delta_depth * cos_a
-
-            for i in range(MAX_DEPTH):
-                tile_hor = int(x_hor), int(y_hor)
-                if tile_hor in self.game.map.world_map:
-                    break
-                x_hor += dx
-                y_hor += dy
-                depth_hor += delta_depth
-
-            # verticals
-            x_vert, dx = (x_map + 1, 1) if cos_a > 0 else (x_map - 1e-6, -1)
-
-            depth_vert = (x_vert - ox) / cos_a
-            y_vert = oy + depth_vert * sin_a
-
-            delta_depth = dx / cos_a
-            dy = delta_depth * sin_a
-
-            for i in range(MAX_DEPTH):
-                tile_vert = int(x_vert), int(y_vert)
-                if tile_vert in self.game.map.world_map:
-                    break
-                x_vert += dx
-                y_vert += dy
-                depth_vert += delta_depth
-
-            if depth_vert < depth_hor:
-                depth = depth_vert
-            else:
-                depth = depth_hor
-            '''
             #debug
-            pg.draw.line(self.game.screen,'red',(50*ox,50*oy),
-                    (50*ox + 50*depth*cos_a,50*oy + 50*depth*sin_a),2)
+            #pg.draw.line(self.game.screen, 'red', (FAKEWIDTH * ox, FAKEHEIGHT * oy),
+            #        (FAKEWIDTH * (ox + depth * cos_a), FAKEHEIGHT * (oy + depth * sin_a)), 2)
 
+            #Removal of the fishbowl efect (curvature of the FOV)
+            depth *= math.cos(self.game.player.angle - ray_starting_angle )
+
+
+            #Projection height
+            projection_height = SCREEN_DISTANCE / (depth + 0.00001) #Tiny number for division by zero error
+
+            #Draw Projection
+            pg.draw.rect(self.game.screen, 'white',
+                         (ray * SCALE_OF_RECTANGLE, HEIGHT//2 - projection_height//2, SCALE_OF_RECTANGLE, projection_height))
+
+            #Changes the angle until the fov is completer with rays
             ray_starting_angle += DELTA_ANGLE
-
-    def align(self, x, y):
-        return (x // GRID_BLOCK) * GRID_BLOCK, (y // GRID_BLOCK) * GRID_BLOCK
 
     def update(self):
         self.ray_cast()
