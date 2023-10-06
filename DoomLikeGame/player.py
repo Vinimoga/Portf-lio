@@ -7,17 +7,23 @@ class Player:
         self.game = game
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
+        self.speed = PLAYER_SPEED
 
     def movement(self):
         #print(PLAYER_POS)
         sin_a = math.sin(self.angle)
         cos_a = math.cos(self.angle)
         dx, dy = 0, 0
-        speed = PLAYER_SPEED * self.game.delta_time
+
+        keys = pg.key.get_pressed()
+        if keys[pg.K_LSHIFT]:
+            speed = (self.speed + 0.003) * self.game.delta_time
+        else:
+            speed = self.speed * self.game.delta_time
+
         speed_sin = speed * sin_a
         speed_cos = speed * cos_a
 
-        keys = pg.key.get_pressed()
         if keys[pg.K_w]:
             #print('w foi apertado')
             dx += speed_cos

@@ -60,4 +60,6 @@ the internet told me. So now it is working huh...
 
 the rest of the day I tried the pseudo 3D, so 
 bear with me.
+Apparently the pseudo 3D is very, basically 2 
+lines of code.
 

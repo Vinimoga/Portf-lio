@@ -9,9 +9,10 @@ FAKEWIDTH = 50
 FAKEHEIGHT = 50
 
 #Player movement
-PLAYER_POS = 1,1 #Mini Map
-PLAYER_ANGLE = 0
-PLAYER_SPEED = 0.004
+PLAYER_POS = 3,3 #Mini Map
+PLAYER_ANGLE = math.pi/4
+
+PLAYER_SPEED = 0.001
 PLAYER_ROT_SPEED = 0.002
 
 #Raycasting
@@ -26,3 +27,7 @@ GRID_BLOCK = 50
 #Pseudo 3D
 SCREEN_DISTANCE = (WIDTH//2)/math.tan(HALF_FOV)
 SCALE_OF_RECTANGLE = WIDTH//NUM_ARRAYS #n rectangles (numrays) times the Scale of the rectangle mus be equal to the width
+
+#Texture
+TEXTURE_SIZE = 256
+see_distance = 4
