@@ -63,3 +63,15 @@ bear with me.
 Apparently the pseudo 3D is very, basically 2 
 lines of code.
 
+1006 - Today I started experimenting with the 
+expansion of the map and changes in the color
+and lighting in the game. Also, I tried adding
+object rendering, but it failed, I'll try it 
+again later, for now I'll try to make the game
+more absurd with the map creation.
+I discovered that you can go out of bounds. 
+This has been a good experience, because I'm 
+feeling extra happy. Now that my college have
+entered a strike i'll have more time to build 
+my game from the ground Up.
+

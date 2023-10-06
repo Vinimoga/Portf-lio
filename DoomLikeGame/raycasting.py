@@ -137,7 +137,7 @@ class RayCasting:
                 color = [100/(1 + depth ** 5 * see_distance)] * 3
             # Draw Projection
 
-            pg.draw.rect(self.game.screen, color ,
+            pg.draw.rect(self.game.screen, color,
                          (ray * SCALE_OF_RECTANGLE, HEIGHT//2 - projection_height//2, SCALE_OF_RECTANGLE, projection_height))
 
             #Ray casting result
