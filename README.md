@@ -8,10 +8,8 @@
 
 ## Projects
 
-Projects are divided into three tiers based on the knowledge and experience
-required to complete them.
-
 🌟 - New Project
+-
 
 ### Featured Projects
 
