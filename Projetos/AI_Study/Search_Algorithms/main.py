@@ -10,9 +10,10 @@ class window():
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
         self.maze = maze(self)
-        self.frontier = frontier(self)
+        '''
+        self.frontier = StackFrontier(self)
         self.stack = explored_set()
-
+        '''
     def update(self):
         self.screen.fill('black')
         self.maze.draw()

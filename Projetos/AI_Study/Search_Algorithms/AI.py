@@ -12,7 +12,7 @@ class node():
         self.state = state
         self.action = action
 
-class frontier():
+class StackFrontier():
     def __init__(self,end):
         self.frontier = []
         self.end = end
