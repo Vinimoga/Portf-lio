@@ -24,6 +24,12 @@ DELTA_ANGLE = FOV/NUM_ARRAYS
 MAX_DEPTH = 20
 GRID_BLOCK = 50
 
+#Mouse Movement
+MOUSE_SENSITIVITY =  0.00009
+MOUSE_MAX_REL = 40
+MOUSE_BORDER_LEFT = 100
+MOUSE_BORDER_RIGHT = WIDTH - MOUSE_BORDER_LEFT
+
 #Pseudo 3D
 SCREEN_DISTANCE = (WIDTH//2)/math.tan(HALF_FOV)
 SCALE_OF_RECTANGLE = WIDTH//NUM_ARRAYS #n rectangles (numrays) times the Scale of the rectangle mus be equal to the width
