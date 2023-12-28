@@ -9,7 +9,7 @@ class Particle:
         self.color = None
         self.velocity = None
         self.surface = surface
-        self.radius = 5
+        self.radius = global_radius
 
     def get_pos(self):
         self.pos = [np.random.randint(self.radius, width - self.radius), np.random.randint(self.radius, height - self.radius)]
