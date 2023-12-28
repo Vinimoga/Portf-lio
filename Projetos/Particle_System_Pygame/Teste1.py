@@ -24,6 +24,7 @@ class Particle_System:
             copy = True
             particulas.append(Particle(screen))
             particulas[i].get_color()
+            particulas[i].get_velocity()
 
             # Let's make sure we don't spawn any particle inside another.
             while copy:
@@ -56,6 +57,7 @@ class Particle_System:
         # RENDER
         for i in range(number_of_particles):
             particulas[i].draw()
+            particulas[i].movement()
 
         # flip() the display to put your work on screen
         pygame.display.flip()

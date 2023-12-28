@@ -2,10 +2,12 @@ import numpy as np
 from Settings import *
 import pygame
 
+
 class Particle:
     def __init__(self, surface):
         self.pos = None
         self.color = None
+        self.velocity = None
         self.surface = surface
         self.radius = 5
 
@@ -18,11 +20,14 @@ class Particle:
     def get_color(self):
         self.color = list(np.random.choice(range(256), size=3))
 
+    def get_velocity(self):
+        self.velocity = np.random.uniform(-1, 1, size=2)
+
     def draw(self):
         pygame.draw.circle(self.surface, self.color, self.pos, self.radius)
 
     def status(self):
-        print(f'position: {self.pos}     color: {self.color}')
+        print(f'position: {self.pos}     color: {self.color}     velocity: {self.velocity}')
 
     def movement(self):
-        pass
+        self.pos += self.velocity
