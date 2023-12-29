@@ -1,10 +1,10 @@
 2023:
 
-0917 -
+0917 - The start of a Project.
 
 0919 - Today I've started venturing out about the 
 raycast functions. They are a bit complicated but 
-I'm trying to figure it out. I'have found another
+I'm trying to figure it out. I have found another
 but with me FAKEWIDTH and FAKEHEIGHT, becouse
 they weren't in all the player assets, only on 
 the map ones, it made the player be shown in 
@@ -14,7 +14,7 @@ player, it worked flawlessly, but I really had to
 figure It out. It has been an adventure until now,
 I expect that this project takes some time before 
 I really say it is 'finished'. I'm not thinking in
-making a pretty big game, only something I cass 
+making a pretty big game, only something I can 
 take some time off college and into programming.
 
 0927 - Started doing the engine of the game
@@ -23,9 +23,9 @@ did something in the game, better do more.
 
 0929 - I've tried solving more about the raycasting 
 function, but something is on my nerve. On the 
-beggining i've tried doing it on a "changable" frame,
+beggining i've tried doing it on a "changeable" frame,
 but this idea doesn't work if the entire game doesn't
-work, so I am trashing it out to biuld again from a
+work, so I am trashing it out to build again from a
 squared resolution and a change it latter. A squared
 map will be implemented too.
 
@@ -42,14 +42,14 @@ tutorial, then i'll try to implement a different
 type o raycasting, called a Digital Differential 
 Analyzer (DDA). I'll see this again later. 
 
-1004 - Today I braced miself to do the DDA part.
-It is acctually not that hard. The way it works 
+1004 - Today I braced myself to do the DDA part.
+It is actually not that hard. The way it works 
 is tracing a ray to intercept the horizontal 
 lines and the vertical lines, witch is the closest
 one is where the ray 'hits' the wall. The problem 
-arrives in exacly intercepting, becouse depending 
+arrives in exactly intercepting, because depending 
 on the angle, the first part of the tile the ray 
-is gonna hit is the top side, the botton side, so
+is gonna hit is the top side, the bottom side, so
 you need to see with angle are you at to define 
 where can it get, and then compare the results.
 
@@ -60,7 +60,8 @@ the internet told me. So now it is working huh...
 
 the rest of the day I tried the pseudo 3D, so 
 bear with me.
-Apparently the pseudo 3D is very, basically 2 
+
+Apparently the pseudo 3D is very simple, basically 2 
 lines of code.
 
 1006 - Today I started experimenting with the 
@@ -69,9 +70,32 @@ and lighting in the game. Also, I tried adding
 object rendering, but it failed, I'll try it 
 again later, for now I'll try to make the game
 more absurd with the map creation.
-I discovered that you can go out of bounds. 
+
+I discovered that you can go out of bounds,
+this is fun lol. 
+
 This has been a good experience, because I'm 
 feeling extra happy. Now that my college have
-entered a strike i'll have more time to build 
+entered a strike I'll have more time to build 
 my game from the ground Up.
 
+1229 - I was away for a long time because of my
+colege and my work, but now I got my well
+deserved vaccation, so, to rest my body and soul
+I'll do more of my game. I need to get this
+game more complex and animated, and for the first
+time in a long time I am animated.
+In the next few days I'll get some objetives to 
+myself, starting with:
+- Creation of Enemy entities;
+- adding texture to the walls;
+- creating a bigger and complex map;
+- upgrading the movement system;
+- giving the 'flashlight' effect;
+
+For now this will be it, yesterday I already got
+started with the movement upgrade, giving a change
+in the angle of the character with the mouse.
+Let's get started.
+
+2024:

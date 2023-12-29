@@ -1,5 +1,6 @@
 import pygame as pg
 import math
+import time
 from settings import *
 
 class RayCasting:
@@ -7,6 +8,8 @@ class RayCasting:
         self.game = game
         self.ray_casting_result = []
         self.objects_to_render = []
+        self.time = 0
+        self.flash = False
         #self.textures = self.game.object_renderer.wall
 
     def get_objects_to_render(self):
@@ -22,6 +25,19 @@ class RayCasting:
             wall_pos = (ray*SCALE_OF_RECTANGLE, HEIGHT//2 - projection_height//2)
 
             self.objects_to_render.append((depth,wall_column,wall_pos))
+
+    def timed_flash(self):
+        self.time += 1
+
+        if self.time > FLASHTIME and self.flash == False:
+            self.time = 0
+            self.flash = True
+        if self.time > MANTAINTIME and self.flash == True:
+            self.time = 0
+            self.flash = False
+
+
+
 
     def ray_cast(self):
         self.ray_casting_result = []
@@ -131,7 +147,7 @@ class RayCasting:
 
             #Flash determination
             keys = pg.key.get_pressed()
-            if keys[pg.K_r]:
+            if keys[pg.K_r] or self.flash:
                 color = [(255/(1 + depth ** 5 * see_distance/1000)),0,0]
             else:
                 color = [100/(1 + depth ** 5 * see_distance)] * 3
