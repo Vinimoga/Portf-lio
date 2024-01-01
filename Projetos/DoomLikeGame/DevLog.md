@@ -98,4 +98,7 @@ started with the movement upgrade, giving a change
 in the angle of the character with the mouse.
 Let's get started.
 
+Just did the timed flash function, still have some
+bugs to fix, for example, the seconds of the timer
+are a little, need some more mix and maxing.
 2024:
