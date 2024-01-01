@@ -21,10 +21,10 @@ class RayCasting:
                 offset * (TEXTURE_SIZE - SCALE_OF_RECTANGLE), 0, SCALE_OF_RECTANGLE, TEXTURE_SIZE
             )
 
-            wall_column = pg.transform.scale(wall_column, (SCALE_OF_RECTANGLE,projection_height))
+            wall_column = pg.transform.scale(wall_column, (SCALE_OF_RECTANGLE, projection_height))
             wall_pos = (ray*SCALE_OF_RECTANGLE, HEIGHT//2 - projection_height//2)
 
-            self.objects_to_render.append((depth,wall_column,wall_pos))
+            self.objects_to_render.append((depth, wall_column, wall_pos))
 
     def timed_flash(self):
         self.time += 1
@@ -35,9 +35,6 @@ class RayCasting:
         if self.time > MANTAINTIME and self.flash == True:
             self.time = 0
             self.flash = False
-
-
-
 
     def ray_cast(self):
         self.ray_casting_result = []

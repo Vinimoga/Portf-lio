@@ -34,7 +34,7 @@ class Game:
     def counting_time(self):
         self.cont_time += self.delta_time
         if self.cont_time >= 1000:
-            print('one second')
+            #print('one second')
             self.raycast.timed_flash()
             self.cont_time = 0
 

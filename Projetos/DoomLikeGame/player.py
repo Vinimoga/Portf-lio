@@ -9,6 +9,8 @@ class Player:
         self.x, self.y = PLAYER_POS
         self.angle = PLAYER_ANGLE
         self.speed = PLAYER_SPEED
+        self.walking = False
+
 
     def movement(self):
         # print(PLAYER_POS)
@@ -29,15 +31,19 @@ class Player:
             # print('w foi apertado')
             dx += speed_cos
             dy += speed_sin
+            self.walking = True
         if keys[pg.K_a]:
             dy += -speed_cos
             dx += speed_sin
+            self.walking = True
         if keys[pg.K_s]:
             dx += -speed_cos
             dy += -speed_sin
+            self.walking = True
         if keys[pg.K_d]:
             dy += speed_cos
             dx += -speed_sin
+            self.walking = True
 
         self.check_wall_collision(dx, dy)
 
@@ -77,9 +83,20 @@ class Player:
         self.rel = max(-MOUSE_MAX_REL, min(MOUSE_MAX_REL, self.rel))
         self.angle += self.rel * MOUSE_SENSITIVITY * self.game.delta_time
 
+    def sound(self):
+        if self.walking == True:
+            #make sound
+            pass
+
+        if self.game.raycast.flash:
+            #make flashing sound
+            pass
+
+
     def update(self):
         self.movement()
         self.mouse_movement()
+        self.sound()
 
     @property
     def pos(self):
