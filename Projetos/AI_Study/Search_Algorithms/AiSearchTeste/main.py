@@ -1,7 +1,7 @@
 import pygame as pg
-from maze import *
-from AI import *
-from settings import *
+from Projetos.AI_Study.Search_Algorithms.AiSearchTeste.maze import *
+from Projetos.AI_Study.Search_Algorithms.AiSearchTeste.AI import *
+from Projetos.AI_Study.Search_Algorithms.AiSearchTeste.settings import *
 import sys
 
 class window():

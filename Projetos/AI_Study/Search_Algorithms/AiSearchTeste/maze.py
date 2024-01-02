@@ -1,5 +1,5 @@
 import pygame as pg
-from AI import *
+from Projetos.AI_Study.Search_Algorithms.AiSearchTeste.AI import *
 
 _ = False
 First_map = [[_, _, _, _, _, _],
