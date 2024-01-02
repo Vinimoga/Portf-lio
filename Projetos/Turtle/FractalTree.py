@@ -1,17 +1,15 @@
 from turtle import *
 from random import *
 
-speed(255)
-
-right(-90)
-
-penup()
-goto(0,-300)
-pendown()
-
-
+def init():
+    speed(255)
+    right(-90)
+    penup()
+    goto(0,-300)
+    pendown()
 
 def Tree(size, lvl, angle):
+
     if lvl > 0:
         forward(size)
         right(angle)
@@ -31,6 +29,7 @@ def TreeAleatória(size, lvl, angle):
         right(angle)
         bk(size)
 
+#init()
 #Tree(150, 7, 30)
-TreeAleatória(150,12,30)
-done()
+#TreeAleatória(150,12,30)
+#done()

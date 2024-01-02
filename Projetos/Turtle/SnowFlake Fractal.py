@@ -1,5 +1,6 @@
 from turtle import *
 
+
 def snowflake(size,level):
     if level == 0:
         forward(size)
