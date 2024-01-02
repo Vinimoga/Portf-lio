@@ -101,4 +101,16 @@ Let's get started.
 Just did the timed flash function, still have some
 bugs to fix, for example, the seconds of the timer
 are a little, need some more mix and maxing.
+
 2024:
+
+0102 - Hey, you know, happy new year, yeah!
+
+Today I've found myself a little less interested
+in this project, I'll do another thing before I
+come back again to this project. I'll focus more
+about myself and will learn more about web deve-
+lopment and a lot of things like this, see you 
+again soon.
+
+
