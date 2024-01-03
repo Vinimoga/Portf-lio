@@ -11,10 +11,10 @@ class StackFrontier(): #This is a Last in First Out Frontier
     def __init__(self):
         self.frontier = []
 
-    def In_stack(self,Node):
+    def In(self,Node):
         self.frontier.append(Node)
 
-    def Out_stack(self):
+    def Out(self):
         if self.empty():
             raise Exception("Can't remove from empty Frontier")
         else:
@@ -25,9 +25,10 @@ class StackFrontier(): #This is a Last in First Out Frontier
 
     def empty(self):
         return len(self.frontier) == 0
+    
 
 
-class QueueFrontier(StackFrontier): #this is a First in First Out frontier, inherited from the Stack frontier.
+class QueueFrontier(StackFrontier): #this is a First in First Out Stack_Frontier, inherited from the Stack Stack_Frontier.
 
     def Out_stack(self): #the only change on this class will be on de removal of the node, showing here:
         if self.empty():
@@ -42,9 +43,6 @@ class Maze():
         #Opening the maze.txt file
         with open(map) as f:
             self.map = f.read()
-
-        #Starting an instance of a stack frontier for solution of the problem
-        self.stack_frontier = StackFrontier()
 
         #Hardblock for more than one Goal or Starting Point
         if self.map.count('A') != 1:
@@ -68,10 +66,10 @@ class Maze():
             for j in range(self.column):
                 #print(i,j)
                 if self.map[i][j] == 'A':
-                    line.append(False)
+                    line.append(True)
                     self.finish = (i,j)
                 elif self.map[i][j] == 'B':
-                    line.append(False)
+                    line.append(True)
                     self.start = (i,j)
                 elif self.map[i][j] == ' ':
                     line.append(True)
@@ -101,11 +99,57 @@ class Maze():
                 
             
     def Solve(self):
-        #Finds the Maze solution:
+        '''Finds the Maze solution:'''
+
+        #Start with a new variable
         self.num_explored = 0
+
+        # Initialize the Stack_Frontier
+        Stack_Frontier = StackFrontier()
+
+        # Initialize a start node in the Stack_Frontier
+        start = Node(self.start, None, None)
+        Stack_Frontier.In(start)
+     
         
+        # Initialize an empty explored set
+        self.explored = set()
+
+        while True:
+            #print(Stack_Frontier.empty())
+            if Stack_Frontier.empty():
+                raise Exception('No Solution')
+            
+            node = Stack_Frontier.Out()
+            self.num_explored += 1
+
+            if node.state == self.finish:
+                actions = []
+                cells = []
+                while node.parent is not None:
+                    actions.append(node.action)
+                    cells.append(node.parent.state)
+                    node = node.parent
+                actions.reverse()
+                cells.reverse()
+                self.solution = (actions, cells)
+                return
+            
+            self.explored.add(node.state)
+            
+            for action, state in self.around_point_actions(node.state):
+                if not Stack_Frontier.State_verification(state) and state not in self.explored:
+                    child_node = Node(state, parent = node, action = action)
+                    Stack_Frontier.In(child_node)
+
+
 
 
 
 maze = Maze(r"D:\User\VScode\Portf-lio\Projetos\AI_Study\Search_Algorithms\AITest\1maze.txt")
-print(maze.arount_point_actions((4,0)))
+maze.Solve()
+way, point = maze.solution
+
+print(f'The Way I got to the end was following: {way}')
+print(f'witch passed through this points: {point}')
+print(f'and I explored this points{maze.explored}')
