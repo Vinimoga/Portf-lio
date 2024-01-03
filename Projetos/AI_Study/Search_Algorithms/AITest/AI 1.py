@@ -144,12 +144,11 @@ class Maze():
 
 
 
+if __name__ == '__main__':
+    maze = Maze(r"D:\User\VScode\Portf-lio\Projetos\AI_Study\Search_Algorithms\AITest\2maze.txt")
+    maze.Solve()
+    way, point = maze.solution
 
-
-maze = Maze(r"D:\User\VScode\Portf-lio\Projetos\AI_Study\Search_Algorithms\AITest\1maze.txt")
-maze.Solve()
-way, point = maze.solution
-
-print(f'The Way I got to the end was following: {way}')
-print(f'witch passed through this points: {point}')
-print(f'and I explored this points{maze.explored}')
+    print(f'The Way I got to the end was following: {way}')
+    print(f'witch passed through this points: {point}')
+    print(f'and I explored this points{maze.explored}')
