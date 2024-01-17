@@ -5,14 +5,14 @@ from SpiralData import *
 from LossFunctions import *
 import matplotlib.pyplot as plt
 
-X,t = spiral_data(100,3)
+X,t = spiral_data(10,3)
 
 plt.scatter(X[:,0],X[:,1],c=t)
 
 #New code starts here
 
 nnfs = NeuralNetwork()
-nnfs.add_input_layer(X)
+nnfs.add_input_layer(X, t)
 nnfs.add_layer(n_inputs=2,n_neurons=3)
 nnfs.add_activation_function("ReLU")
 nnfs.add_layer(n_inputs=3,n_neurons=3)
@@ -21,6 +21,8 @@ nnfs.add_activation_function('Softmax')
 nnfs.solve()
 
 print(nnfs.solution)
+print(nnfs.loss)
+print(nnfs.accuracy)
 plt.show()
       
 
