@@ -1,4 +1,50 @@
 import numpy as np
+from ActivationFunctions import *
+
+class NeuralNetwork:
+
+    def __init__(self):
+        self.network = []
+        self.layers = 0
+        self.activation_function_list = []
+        self.activation_function = ActivationFunctions()
+        self.func_list = ["softmax", "relu"] 
+
+    def add_input_layer(self, inputs):
+        self.inputs = inputs
+
+    def add_layer(self, n_inputs, n_neurons):
+        Layer = NetworkLayer(n_inputs, n_neurons)
+        self.network.append(Layer)
+        self.activation_function_list.append('')
+        self.layers += 1
+        
+    def solve(self, inputs):
+        for i in len(self.network):
+            inputs = self.network[i].forward(inputs)
+
+    def load(self, layer, weights, biases):
+        self.network[layer].load_weights(weights)
+        self.network[layer].load_biases(biases)
+
+    def save(self, path):
+        pass
+
+    def add_activation_function(self, func_name, layer = 0):
+        if layer < 0 or layer > len(self.network):
+            raise Exception("layer doesn't exist") 
+
+        if func_name.lower() not in self.func_list:
+            raise Exception("function doesn't exist") 
+        
+        self.activation_function_list[layer - 1] =  func_name
+
+    def solve(self, inputs):
+        pass
+
+    def __repr__(self):
+        return f'Neural_Network with {self.layers} layers'
+
 
 
 class NetworkLayer():
@@ -19,4 +65,17 @@ class NetworkLayer():
     '''
     def forward(self, inputs):
         self.output = np.dot(inputs, self.weights) + self.biases
+    
+    
+    def load_weights(self, weights):
+        pass
+
+    def load_biases(self, biases):
+        pass
+
+    def __repr__(self):
+        return f"Layer with {self.weights.shape[0]} inputs and {self.weights.shape[1]} neurons"
+
+        
+        
        
