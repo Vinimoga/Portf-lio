@@ -8,7 +8,7 @@ class NeuralNetwork:
         self.layers = 0
         self.activation_function_list = []
         self.activation_function = ActivationFunctions()
-        self.func_list = ["softmax", "relu"] 
+        self.usable_func_list = ["Softmax", "ReLU"] 
 
     def add_input_layer(self, inputs):
         self.inputs = inputs
@@ -19,9 +19,17 @@ class NeuralNetwork:
         self.activation_function_list.append('')
         self.layers += 1
         
-    def solve(self, inputs):
-        for i in len(self.network):
-            inputs = self.network[i].forward(inputs)
+    def solve(self):
+        print('cheguei')
+        data = self.inputs
+        for i in range(len(self.network)):
+            print(i)
+            self.network[i].forward(data)
+            data = self.network[i].output
+            print('workeddata:',data)
+            self.use_activation_function(func_name=self.activation_function_list[i], inputs= data)
+            data = self.activation_function.output
+        self.solution = data
 
     def load(self, layer, weights, biases):
         self.network[layer].load_weights(weights)
@@ -30,17 +38,15 @@ class NeuralNetwork:
     def save(self, path):
         pass
 
-    def add_activation_function(self, func_name, layer = 0):
-        if layer < 0 or layer > len(self.network):
-            raise Exception("layer doesn't exist") 
-
-        if func_name.lower() not in self.func_list:
-            raise Exception("function doesn't exist") 
-        
-        self.activation_function_list[layer - 1] =  func_name
-
-    def solve(self, inputs):
-        pass
+    def use_activation_function(self, func_name, inputs):
+        method = getattr(self.activation_function, func_name, None)
+        return method(inputs)
+    
+    def add_activation_function(self, func_name,layer = 0):
+        if func_name not in self.usable_func_list:
+            raise Exception('Invalid activation function name')
+        else:
+            self.activation_function_list[layer - 1] = func_name
 
     def __repr__(self):
         return f'Neural_Network with {self.layers} layers'
@@ -75,7 +81,3 @@ class NetworkLayer():
 
     def __repr__(self):
         return f"Layer with {self.weights.shape[0]} inputs and {self.weights.shape[1]} neurons"
-
-        
-        
-       
