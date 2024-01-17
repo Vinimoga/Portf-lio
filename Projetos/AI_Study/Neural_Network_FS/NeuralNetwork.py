@@ -20,13 +20,12 @@ class NeuralNetwork:
         self.layers += 1
         
     def solve(self):
-        print('cheguei')
         data = self.inputs
         for i in range(len(self.network)):
-            print(i)
+            #print(i)
             self.network[i].forward(data)
             data = self.network[i].output
-            print('workeddata:',data)
+            #print('workeddata:',data)
             self.use_activation_function(func_name=self.activation_function_list[i], inputs= data)
             data = self.activation_function.output
         self.solution = data
