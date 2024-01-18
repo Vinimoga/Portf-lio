@@ -35,6 +35,7 @@ class NeuralNetwork:
             self.use_activation_function(func_name=self.activation_function_list[i], inputs= data)
             data = self.activation_function.output
         self.solution = data
+        print('passei por aqui')
         self.find_loss(data, self.category)
         self.find_accuracy(data, self.category)
 
@@ -60,6 +61,18 @@ class NeuralNetwork:
     
     def find_accuracy(self, softmax_output, intended_target_value):
         self.accuracy = self.loss_function.calculate_accuracy(softmax_output,intended_target_value)
+
+    def learn(self, layer, intended_target_value):
+        self.loss_function.calculate_gradient_softmax(self.solution,intended_target_value)
+
+        weight_gradients = (np.dot(self.network[layer - 1].inputs.T,self.loss_function.gradient))
+        new_weights =  (self.network[layer - 1].weights - self.lerning_rate * weight_gradients)
+
+        bias_gradient = (np.sum(self.loss_function.gradient, axis = 0))
+        new_bias =  (self.network[layer - 1].biases - self.lerning_rate * bias_gradient)
+
+        self.network[layer - 1].weights = new_weights
+        self.network[layer - 1].biases = new_bias
 
     def __repr__(self):
         return f'Neural_Network with {self.layers} layers'

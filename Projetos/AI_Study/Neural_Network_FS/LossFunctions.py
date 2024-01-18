@@ -39,7 +39,7 @@ class CategoricalCrossEntropy_Loss(Loss):
 
         return self.accuracy
     
-    def calculate_gradient(self, softmax_output, intended_target_value):
+    def calculate_gradient_softmax(self, softmax_output, intended_target_value):
         # Determine the size of the matrix
         matrix_size = np.max(intended_target_value) + 1
 
