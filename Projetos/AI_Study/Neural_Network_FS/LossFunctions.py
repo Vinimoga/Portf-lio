@@ -16,13 +16,13 @@ class CategoricalCrossEntropy_Loss(Loss):
         #chosing the way we will read the category
         if len(y_true.shape) == 1:
             #have passed scalar class values
-            probabilitys = y_prediction_clipped[range(samples), y_true]
+            self.probabilitys = y_prediction_clipped[range(samples), y_true]
         
         elif len(y_true.shape) == 2:
             #have passed classes entire prediction
-            probabilitys = np.sum(y_prediction_clipped * y_true, axis= 1)
+            self.probabilitys = np.sum(y_prediction_clipped * y_true, axis= 1)
 
-        return -np.log(probabilitys)
+        return -np.log(self.probabilitys)
     
     def calculate_accuracy(self, softmax_output,intended_target_value):
         target_value = np.array(intended_target_value)
@@ -38,4 +38,16 @@ class CategoricalCrossEntropy_Loss(Loss):
             self.accuracy = np.mean(predictions == class_target) 
 
         return self.accuracy
+    
+    def calculate_gradient(self, softmax_output, intended_target_value):
+        # Determine the size of the matrix
+        matrix_size = np.max(intended_target_value) + 1
+
+        # Create the matrix
+        result = np.zeros((len(intended_target_value), matrix_size))
+
+        # Set the positions indicated by the vector to 1
+        result[np.arange(len(intended_target_value)), intended_target_value] = 1
+
+        self.gradient = softmax_output - result
 

@@ -4,11 +4,12 @@ from LossFunctions import *
 
 class NeuralNetwork:
 
-    def __init__(self):
+    def __init__(self, lr = 0.01):
         self.network = []
         self.layers = 0
         self.activation_function_list = []
         self.usable_func_list = ["Softmax", "ReLU"] 
+        self.lerning_rate = lr
 
         
         self.activation_function = ActivationFunctions()
@@ -82,6 +83,7 @@ class NetworkLayer():
     it.
     '''
     def forward(self, inputs):
+        self.inputs = inputs
         self.output = np.dot(inputs, self.weights) + self.biases
     
     
