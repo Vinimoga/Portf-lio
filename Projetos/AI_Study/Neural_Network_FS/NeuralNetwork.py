@@ -35,7 +35,6 @@ class NeuralNetwork:
             self.use_activation_function(func_name=self.activation_function_list[i], inputs= data)
             data = self.activation_function.output
         self.solution = data
-        print('passei por aqui')
         self.find_loss(data, self.category)
         self.find_accuracy(data, self.category)
 

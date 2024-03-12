@@ -1,0 +1,27 @@
+'''
+nnfs.loss_function.calculate_gradient_softmax(nnfs.solution,t)
+print('gradiente da função de custo:')
+print(nnfs.loss_function.gradient)
+print('inputs do layer 2:')
+print(nnfs.network[1].inputs)
+weight_gradients = np.dot(nnfs.network[1].inputs.T,nnfs.loss_function.gradient) 
+print('o gradiente do pesos então é:')
+print(weight_gradients)
+print('e portanto os novos pesos são')
+new_weights = nnfs.network[1].weights - nnfs.lerning_rate * weight_gradients
+print(new_weights)
+print('os antigos eram:')
+print(nnfs.network[1].weights)
+print('agora o gradiente bias é:')
+bias_gradient = np.sum(nnfs.loss_function.gradient, axis = 0)
+print(bias_gradient)
+print('agora o novo bias é:')
+new_bias = nnfs.network[1].biases - nnfs.lerning_rate * bias_gradient
+print(new_bias)
+print('os antigos bias eram:')
+print(nnfs.network[1].biases)
+
+print('and now, lets try again')
+nnfs.network[1].weights = new_weights
+nnfs.network[1].biases = new_bias
+'''

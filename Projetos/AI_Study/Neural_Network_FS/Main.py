@@ -15,7 +15,8 @@ nnfs.add_activation_function("ReLU")
 nnfs.add_layer(n_inputs=3,n_neurons=3)
 nnfs.add_activation_function('Softmax')
 nnfs.solve()
-
+print(nnfs.solution)
+'''
 first = nnfs.loss
 learn = nnfs.loss
 for i in range(10):
@@ -28,3 +29,4 @@ for i in range(10):
 
 print('diferença total:', first - nnfs.loss)
 #plt.show()
+'''
