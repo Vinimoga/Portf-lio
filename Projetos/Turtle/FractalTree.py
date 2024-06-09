@@ -29,7 +29,7 @@ def TreeAleatória(size, lvl, angle):
         right(angle)
         bk(size)
 
-#init()
+init()
 #Tree(150, 7, 30)
-#TreeAleatória(150,12,30)
-#done()
+TreeAleatória(150,10,30)
+done()
