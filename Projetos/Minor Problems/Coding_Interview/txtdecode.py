@@ -39,6 +39,7 @@ def decode(message_file):
 
 
 # Example usage:
-message_file = 'file.txt'
+message_file = "Projetos\Minor Problems\Coding_Interview\Code.txt"
+
 decoded_message = decode(message_file)
 print(decoded_message)
