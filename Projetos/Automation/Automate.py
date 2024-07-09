@@ -5,7 +5,7 @@ import pandas as pd
 #Initial setup and time to wind-up
 pyautogui.FAILSAFE = True
 time.sleep(3)
-pyautogui.PAUSE = 0.5
+pyautogui.PAUSE = 1
 
 #Open Google Chrome
 pyautogui.press("win")
@@ -25,7 +25,7 @@ pyautogui.write(link)
 pyautogui.press("enter")
 
 #enter your login and password
-time.sleep(2)
+time.sleep(5)
 pyautogui.click((396, 376))
 pyautogui.write("usuario")
 pyautogui.press('tab')
